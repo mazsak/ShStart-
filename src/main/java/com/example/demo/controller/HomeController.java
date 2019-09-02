@@ -5,9 +5,10 @@ import com.example.demo.service.IPersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class HomeController {
@@ -25,10 +26,16 @@ public class HomeController {
         personService.save(person);*/
         return "home";
     }
-    @RequestMapping(value = "/all", method = RequestMethod.GET)
+    @GetMapping(value = "/all")
     public String  all(Model model) {
        model.addAttribute("persons", personService.findAll());
        return "all";
+    }
+    @GetMapping(value = "person")
+    public String one(Model model, @RequestParam String id){
+       Person person = personService.findById(Long.parseLong(id));
+       model.addAttribute("person",person);
+        return "person";
     }
 
 
