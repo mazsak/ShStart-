@@ -15,7 +15,7 @@ public class PersonService  implements IPersonService{
 
     @Override
     public boolean save(Person person) {
-        Person save = personRepo.save(person)
+        Person save = personRepo.save(person);
         return false;
     }
 
