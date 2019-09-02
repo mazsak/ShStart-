@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface IPersonService {
     boolean save(Person person);
+    boolean saveAll(List<Person> people);
 
     boolean update(Person person);
 

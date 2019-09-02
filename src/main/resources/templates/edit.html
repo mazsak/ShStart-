@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>People</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+<div style="width: 60%; margin-right: auto; margin-left:auto">
+    <h1>People</h1>
+    <form action="#" th:action="@{/saveAll}" th:object="${form}" method="post">
+        <fieldset>
+            <a class="btn btn-primary" href="#" th:href="@{/all}" >Back to All People</a>
+            <input class="btn btn-success" type="submit" id="submitButton" th:value="Save">
+            <input class="btn btn-danger" type="reset" id="resetButton" name="reset" th:value="Reset"/>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Age</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="person, itemStat : ${form.people}">
+                    <td>
+                        <input hidden th:name="|people[${itemStat.index}].id|" th:value="${person.getId()}"/>
+                    </td>
+                    <td>
+                        <input th:name="|people[${itemStat.index}].name|" th:value="${person.getName()}"/>
+                    </td>
+                    <td>
+                        <input th:name="|people[${itemStat.index}].surname|" th:value="${person.getSurname()}"/>
+                    </td>
+                    <td>
+                        <input th:name="|people[${itemStat.index}].age|" th:value="${person.getAge()}"/>
+                    </td>
+                    <td>
+                        <input th:name="|people[${itemStat.index}].description|" th:value="${person.getDescription()}"/>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </fieldset>
+    </form>
+</div>
+</body>
+</html>

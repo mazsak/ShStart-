@@ -1,5 +1,36 @@
-<tr th:each="person : ${persons}" xmlns:th="http://www.w3.org/1999/xhtml">
-    <td th:text="${person.name}">Name</td>
-    <td th:text="${person.surname}">Surname </a></td>
-    <td th:text="${person.description}">Description </td>
-</tr>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>All People</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+<div style="width: 60%; margin-right: auto; margin-left:auto">
+    <h1 style="text-align: center;"><b>All People</b></h1>
+    <a class="btn btn-success" href="#" th:href="@{/add}"> Add Person </a>
+    <a class="btn btn-primary" href="#" th:href="@{/edit}"> Edit People </a>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Age</th>
+            <th>Description</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="person : ${form.people}">
+            <td th:text="${person.name}">Name</td>
+            <td th:text="${person.surname}">Surname ></td>
+            <td th:text="${person.age}">Age ></td>
+            <td th:text="${person.description}">Description</td>
+            <td>
+                <a class="btn btn-primary" href="#" th:href="@{/person?id=} + ${person.id}"> Show </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

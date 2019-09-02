@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PersonService  implements IPersonService{
+public class PersonService implements IPersonService {
 
     @Autowired
     private IPersonRepo personRepo;
@@ -16,6 +16,16 @@ public class PersonService  implements IPersonService{
     @Override
     public boolean save(Person person) {
         Person save = personRepo.save(person);
+        return false;
+    }
+
+    @Override
+    public boolean saveAll(List<Person> people) {
+        List<Person> save = personRepo.saveAll(people);
+        if (save != null) {
+            return true;
+        }
+
         return false;
     }
 
