@@ -31,11 +31,13 @@ public class PersonService  implements IPersonService{
 
     @Override
     public List<Person> findAll() {
-        return null;
+        List<Person> personList = personRepo.findAll();
+        return personList;
     }
 
     @Override
     public Person findById(Long id) {
-        return null;
+        Person person = personRepo.findById(id).get();
+        return person;
     }
 }

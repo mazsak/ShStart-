@@ -18,12 +18,6 @@ public class HomeController {
 
     @RequestMapping({"/",""})
     public String home(){
-        /*Person person = new Person();
-        person.setName("Jan");
-        person.setAge(15);
-        person.setSurname("Kowalski");
-        person.setDescription("Jakis tam Jan");
-        personService.save(person);*/
         return "home";
     }
     @GetMapping(value = "/all")
